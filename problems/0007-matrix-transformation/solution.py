@@ -1,0 +1,11 @@
+import numpy as np
+
+def transform_matrix(A: list[list[int|float]], T: list[list[int|float]], S: list[list[int|float]]) -> list[list[int|float]]:
+	if np.linalg.det(T) == 0 or np.linalg.det(S) == 0:
+		print("Det of S/T can not be zero")
+		return -1
+	
+	T_inv = np.linalg.inv(T)
+	transformed_matrix = np.matmul(np.matmul(T_inv, A), S)
+
+	return transformed_matrix
